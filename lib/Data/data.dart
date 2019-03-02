@@ -2777,7 +2777,7 @@
 "YTD":"Year-to-Date",
 "ZBR":"Zero Base Review",
 "ZOE":"Zone of Exclusion",
- "AAS":"American Astronomical Society",
+ /*"AAS":"American Astronomical Society",
    "ACMA":
  "Atmospheric Composition Modeling and Analysis",
 
@@ -3697,7 +3697,7 @@
 
 
  "volcanism":
- "Volcanic action or activity",
+ "Volcanic action or activity",*/
 
 
  };
