@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_search/material_search.dart';
-import 'package:nasa/Data/data.dart';
-import 'package:nasa/UI/meaning.dart';
+import 'package:nasa/data/data.dart';
+import 'package:nasa/ui/meaning.dart';
+import 'package:nasa/ui/drawer.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -9,11 +10,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- 
   //to view meaning when user submit in search
   void submit(String text) {
     text = text.toUpperCase();
-    Navigator.of(context).push(view(text,_list,map));
+    Navigator.of(context).push(
+      view(text, _list, map),
+    );
   }
 
   _buildMaterialSearchPage(BuildContext context) {
@@ -34,7 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   .toList(),
               filter: (dynamic value, String criteria) {
                 return value.toLowerCase().trim().contains(
-                    new RegExp(r'' + criteria.toLowerCase().trim() + ''));
+                      new RegExp(r'' + criteria.toLowerCase().trim() + ''),
+                    );
               },
               onSelect: (dynamic value) => submit(value.toString()),
               onSubmit: (String value) => submit(value),
@@ -53,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Nox"),
+          title: Text("Nasa Technical Terms"),
+          centerTitle: true,
         ),
         body: ListView.builder(
             itemCount: _list.length,
@@ -73,7 +77,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(fontSize: 15.0),
                   ),
                   contentPadding: EdgeInsets.all(5.0),
-                  onTap: () => Navigator.of(context).push(view(_list[i],_list,map)),
+                  onTap: () => Navigator.of(context).push(
+                        view(_list[i], _list, map),
+                      ),
                 ),
               );
             }),
@@ -83,71 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Icon(Icons.search),
           onPressed: () => _showMaterialSearch(context),
         ),
-        drawer: new Drawer(
-          child: Column(
-            children: <Widget>[
-              Container(child: Image.asset("asset/happy.gif")),
-              ListTile(
-                title: Text("About"),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                          appBar: AppBar(
-                            title: Text("About"),
-                          ),
-                          body: Center(
-                            child: Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    "Made By",
-                                    style: TextStyle(
-                                        fontSize: 60.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 50.0,
-                                  ),
-                                  Text(
-                                    "Raunak Agarwal\nRohit Kapoor\nUtkarsh Raj\nBiswajit Behera",
-                                    style: TextStyle(fontSize: 20.0),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ))),
-              ),
-              ListTile(
-                title: Text("Sources"),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                          appBar: AppBar(
-                            title: Text("Sources"),
-                          ),
-                          body: Center(
-                            child: Container(
-                              padding: EdgeInsets.all(20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Center(
-                                    child: Text(
-                                      "https://www.nasa.gov/directorates/heo/scan/definitions/acronyms/index.html",
-                                      style: TextStyle(fontSize: 20.0),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ))),
-              ),
-              Divider(
-                height: 10.0,
-              )
-            ],
-          ),
-        ));
+        drawer: MyDrawer());
   }
 }

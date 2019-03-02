@@ -9,7 +9,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Nasa Technical Terms',
       theme: new ThemeData(
-          primarySwatch: Colors.deepPurple, accentColor: Colors.purple),
+        primarySwatch: Colors.deepPurple,
+        accentColor: Colors.purple,
+      ),
       home: new MyHomePage(),
     );
   }
