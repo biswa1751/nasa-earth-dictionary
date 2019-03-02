@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa/model/image.dart';
 
-MaterialPageRoute view(String text, List list, Map map) {
+MaterialPageRoute findMeaning(String text, List list, Map map,BuildContext context) {
   bool check(String text) {
     for (int i = 0; i < list.length; i++) {
       if (list[i] == text) return true;
@@ -22,7 +22,7 @@ MaterialPageRoute view(String text, List list, Map map) {
                         style: TextStyle(fontSize: 50.0),
                       ),
                       SizedBox(
-                        height: 15.0,
+                        height: 10.0,
                       ),
                       Container(
                         height: 500.0,
@@ -60,10 +60,13 @@ MaterialPageRoute view(String text, List list, Map map) {
                               ),
                         ),
                       ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Text("Click on text to get Image")
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 18.0),
+                        child: Text(
+                          "Click on  text to get Image",
+                          style: Theme.of(context).textTheme.body2,
+                        ),
+                      )
                     ],
                   ),
                 )

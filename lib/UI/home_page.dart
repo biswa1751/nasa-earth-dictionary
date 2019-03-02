@@ -12,11 +12,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   //to view meaning when user submit in search
 
-  static List<String> _list;
+  static List<String> _keysList;
   @override
   void initState() {
     super.initState();
-    _list = map.keys.toList();
+    _keysList = wordData.keys.toList();
   }
 
   @override
@@ -27,24 +27,24 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: _list.length,
-        itemBuilder: (context, int i) {
+        itemCount: _keysList.length,
+        itemBuilder: (context,  i) {
           return Card(
             child: ListTile(
               leading: CircleAvatar(
-                child: Text(_list[i][0]),
+                child: Text(_keysList[i][0]),
               ),
               title: Text(
-                "${_list[i]}",
+                "${_keysList[i]}",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
               ),
               subtitle: Text(
-                map[_list[i]],
-                style: TextStyle(fontSize: 15.0),
+                wordData[_keysList[i]],
+                style: TextStyle(fontSize: 16.0),
               ),
               contentPadding: EdgeInsets.all(5.0),
               onTap: () =>
-                  Navigator.of(context).push(view(_list[i], _list, map)),
+                  Navigator.of(context).push(findMeaning(_keysList[i], _keysList, wordData,context)),
             ),
           );
         },
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.search),
         onPressed: () {
           Navigator.of(context).push(
-            buildMaterialSearchPage(context, _list),
+            buildMaterialSearchPage(context, _keysList),
           );
         },
       ),

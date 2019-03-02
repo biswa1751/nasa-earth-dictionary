@@ -1,4 +1,4 @@
- Map<String, String> map = <String, String>{
+ Map<String, String> wordData = <String, String>{
 "4GL":"Fourth Generation Language",
 "4SW":"Fourth Support Wing",
 "A/D":"Analog/Digital",

@@ -7,7 +7,7 @@ buildMaterialSearchPage(BuildContext context, List list) {
   void submit(String text) {
     text = text.toUpperCase();
     Navigator.of(context).push(
-      view(text, list, map),
+      findMeaning(text, list, wordData,context),
     );
   }
 
@@ -24,6 +24,7 @@ buildMaterialSearchPage(BuildContext context, List list) {
               .map((v) => new MaterialSearchResult<String>(
                     value: v,
                     text: "$v",
+                    icon: Icons.search,
                   ))
               .toList(),
           filter: (dynamic value, String criteria) {
