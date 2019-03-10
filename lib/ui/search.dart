@@ -22,6 +22,7 @@ buildMaterialSearchPage(BuildContext context, List list) {
           placeholder: 'Search',
           results: list
               .map((v) => new MaterialSearchResult<String>(
+              
                     value: v,
                     text: "$v",
                     icon: Icons.search,
