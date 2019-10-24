@@ -24,14 +24,14 @@ class MyDrawer extends StatelessWidget {
                                   Text(
                                     "Made By",
                                     style: TextStyle(
-                                        fontSize: 60.0,
+                                        fontSize: 63.0,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(
-                                    height: 50.0,
+                                    height: 52.5,
                                   ),
                                   Text(
-                                    "Raunak Agarwal\nRohit Kapoor\nUtkarsh Raj\nBiswajit Behera",
+                                    "Raunak Agarwal\nRohit Kapoor\nUtkarsh Raj\nBiswajit Behera\nSayantan Biswas",
                                     style: TextStyle(fontSize: 20.0),
                                   )
                                 ],

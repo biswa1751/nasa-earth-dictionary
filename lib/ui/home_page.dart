@@ -36,13 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               title: Text(
                 "${_keysList[i]}",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21.0),
               ),
               subtitle: Text(
                 wordData[_keysList[i]],
-                style: TextStyle(fontSize: 16.0),
+                style: TextStyle(fontSize: 17.0),
               ),
-              contentPadding: EdgeInsets.all(5.0),
+              contentPadding: EdgeInsets.all(6.0),
               onTap: () =>
                   Navigator.of(context).push(findMeaning(_keysList[i], _keysList, wordData,context)),
             ),
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: new FloatingActionButton(
         isExtended: true,
-        tooltip: "Search it out !",
+        tooltip: "Search for it !",
         child: Icon(Icons.search),
         onPressed: () {
           Navigator.of(context).push(
