@@ -1,1 +1,1 @@
-The earth dictionary app.
+Dictionary for NASA common words.
