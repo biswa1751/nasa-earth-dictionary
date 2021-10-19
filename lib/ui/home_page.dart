@@ -12,7 +12,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   //to view meaning when user submit in search
 
-  static List<String> _keysList;
+  static List<String> _keysList = [];
   @override
   void initState() {
     super.initState();
@@ -28,28 +28,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ListView.builder(
         itemCount: _keysList.length,
-        itemBuilder: (context,  i) {
+        itemBuilder: (context, i) {
           return Card(
             child: ListTile(
               leading: CircleAvatar(
                 child: Text(_keysList[i][0]),
               ),
               title: Text(
-                "${_keysList[i]}",
+                _keysList[i],
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
               ),
               subtitle: Text(
-                wordData[_keysList[i]],
+                wordData[_keysList[i]] ?? '',
                 style: TextStyle(fontSize: 16.0),
               ),
               contentPadding: EdgeInsets.all(5.0),
-              onTap: () =>
-                  Navigator.of(context).push(findMeaning(_keysList[i], _keysList, wordData,context)),
+              onTap: () => Navigator.of(context).push(
+                  findMeaning(_keysList[i], _keysList, wordData, context)),
             ),
           );
         },
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         isExtended: true,
         tooltip: "Search it out !",
         child: Icon(Icons.search),
