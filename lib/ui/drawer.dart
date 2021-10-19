@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Drawer(
+    return Drawer(
       child: Column(
         children: <Widget>[
           Container(child: Image.asset("asset/happy.gif")),
@@ -20,7 +20,7 @@ class MyDrawer extends StatelessWidget {
                             child: Container(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Text(
                                     "Made By",
                                     style: TextStyle(
@@ -56,7 +56,7 @@ class MyDrawer extends StatelessWidget {
                               padding: EdgeInsets.all(20.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Center(
                                     child: Text(
                                       "1.https://www.nasa.gov/directorates/heo/scan/definitions/acronyms/index.html\n2.https://images-api.nasa.gov",
