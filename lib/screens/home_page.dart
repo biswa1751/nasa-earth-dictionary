@@ -31,9 +31,16 @@ class _HomePageState extends State<HomePage> {
         itemCount: _abbreviationKeys.length,
         itemBuilder: (context, i) {
           return Card(
+            margin:
+                const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 10),
+            elevation: 10,
+            shadowColor: Colors.black.withOpacity(0.2),
             child: ListTile(
-              leading: CircleAvatar(
-                child: Text(_abbreviationKeys[i][0]),
+              leading: Padding(
+                padding: const EdgeInsets.only(left: 18.0),
+                child: CircleAvatar(
+                  child: Text(_abbreviationKeys[i][0]),
+                ),
               ),
               title: Text(
                 _abbreviationKeys[i],
