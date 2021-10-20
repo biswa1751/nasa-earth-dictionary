@@ -11,9 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //to view meaning when user submit in search
-
   static List<String> _abbreviationKeys = [];
+  final _controller = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -27,37 +26,70 @@ class _HomePageState extends State<HomePage> {
         title: const Text("NASA Abbreviations"),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: _abbreviationKeys.length,
-        itemBuilder: (context, i) {
-          return Card(
-            margin:
-                const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 10),
-            elevation: 10,
-            shadowColor: Colors.black.withOpacity(0.2),
-            child: ListTile(
-              leading: Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: CircleAvatar(
-                  child: Text(_abbreviationKeys[i][0]),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: TextField(
+              controller: _controller,
+              onChanged: (t) {
+                _abbreviationKeys = abbreviations.keys
+                    .where((element) => element.startsWith(t))
+                    .toList();
+                setState(() {});
+              },
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: 'Type Something',
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    _abbreviationKeys = abbreviations.keys.toList();
+                    setState(() {});
+                    _controller.clear();
+                  },
+                  icon: const Icon(Icons.close),
                 ),
               ),
-              title: Text(
-                _abbreviationKeys[i],
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-              ),
-              subtitle: Text(
-                abbreviations[_abbreviationKeys[i]] ?? '',
-                style: TextStyle(fontSize: 16.0),
-              ),
-              contentPadding: const EdgeInsets.all(5.0),
-              onTap: () => Navigator.of(context).push(
-                findMeaning(_abbreviationKeys[i], _abbreviationKeys,
-                    abbreviations, context),
-              ),
             ),
-          );
-        },
+          ),
+          Flexible(
+            child: ListView.builder(
+              itemCount: _abbreviationKeys.length,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, i) {
+                return Card(
+                  margin: const EdgeInsets.symmetric(horizontal: 20)
+                      .copyWith(top: 10),
+                  elevation: 10,
+                  shadowColor: Colors.black.withOpacity(0.2),
+                  child: ListTile(
+                    leading: Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: CircleAvatar(
+                        child: Text(_abbreviationKeys[i][0]),
+                      ),
+                    ),
+                    title: Text(
+                      _abbreviationKeys[i],
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20.0),
+                    ),
+                    subtitle: Text(
+                      abbreviations[_abbreviationKeys[i]] ?? '',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    contentPadding: const EdgeInsets.all(5.0),
+                    onTap: () => Navigator.of(context).push(
+                      findMeaning(_abbreviationKeys[i], _abbreviationKeys,
+                          abbreviations, context),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
       drawer: const AppDrawer(),
     );
