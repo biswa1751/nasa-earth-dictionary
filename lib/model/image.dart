@@ -1,17 +1,17 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class ViewPhoto extends StatefulWidget {
   final String text;
 
-  const ViewPhoto({Key? key,required this.text}) : super(key: key);
+  const ViewPhoto({Key? key, required this.text}) : super(key: key);
   @override
   _ViewPhotoState createState() => _ViewPhotoState();
 }
 
 class _ViewPhotoState extends State<ViewPhoto> {
-  List<List> photos=[];
+  List<List> photos = [];
   List? photo;
   @override
   void initState() {
@@ -21,11 +21,10 @@ class _ViewPhotoState extends State<ViewPhoto> {
   }
 
   void fetchStates() async {
-    var res = await http.get(Uri(
-        path:
-            "https://images-api.nasa.gov/search?q=${widget.text}&media_type=image"));
-    var decodedRes = jsonDecode(res.body);
-    var photores = decodedRes['collection']['items'][1]['href'];
+    var res = await Dio().get(
+        'https://images-api.nasa.gov/search?q=${widget.text}&media_type=image');
+    // var decodedRes = jsonDecode(res.data);
+    var photores = res.data['collection']['items'][1]['href'];
     // List photores = decodedRes['collection'];
     print("photores is $photores");
     for (int i = 0; i < 1; i++) {
@@ -38,9 +37,8 @@ class _ViewPhotoState extends State<ViewPhoto> {
 
   int j = 0;
   void fetchPhoto(String url) async {
-    var finalres = await http.get(Uri(path: url));
-    var finaldecodedRes = jsonDecode(finalres.body);
-    photo = finaldecodedRes;
+    var finalres = await Dio().get(url);
+    photo = finalres.data;
     print("photo=$photo");
     // photos[j++]=photo;
     // print(photo);
@@ -54,7 +52,7 @@ class _ViewPhotoState extends State<ViewPhoto> {
       appBar: AppBar(
         title: Text(widget.text),
       ),
-      body: photo != null
+      body: photo?.first != null
           ? /*GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
     itemCount: photo.length,
@@ -64,11 +62,11 @@ class _ViewPhotoState extends State<ViewPhoto> {
   )*/
           Center(
               child: Image.network(
-                photo?[3],
+                photo?.first,
                 fit: BoxFit.fill,
               ),
             )
-          : Center(child: CircularProgressIndicator()),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }
