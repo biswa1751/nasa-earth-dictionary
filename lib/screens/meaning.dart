@@ -12,7 +12,7 @@ MaterialPageRoute findMeaning(
 
   return MaterialPageRoute(
     builder: (context) => Scaffold(
-      appBar: AppBar(title: Text("Meaning")),
+      appBar: AppBar(title: const Text("Meaning")),
       body: check(text)
           ? Center(
               child: Column(
@@ -22,9 +22,7 @@ MaterialPageRoute findMeaning(
                     text,
                     style: TextStyle(fontSize: 50.0),
                   ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
+                  const SizedBox(height: 10.0),
                   SizedBox(
                     height: 500.0,
                     width: 500.0,
@@ -70,7 +68,7 @@ MaterialPageRoute findMeaning(
                 ],
               ),
             )
-          : Center(
+          : const Center(
               child: Text(
                 "Not Found\nTry another Word",
                 style: TextStyle(fontSize: 20.0),
