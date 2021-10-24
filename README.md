@@ -1,6 +1,5 @@
 # nasa
-
-A new Flutter project.
+A nasa earth dictonary. abbriviations used in NASA and its details.
 
 ## Getting Started
 
