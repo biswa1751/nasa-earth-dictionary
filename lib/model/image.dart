@@ -1,16 +1,15 @@
-import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class ViewPhoto extends StatefulWidget {
   final String text;
 
   const ViewPhoto({Key? key, required this.text}) : super(key: key);
   @override
-  _ViewPhotoState createState() => _ViewPhotoState();
+  ViewPhotoState createState() => ViewPhotoState();
 }
 
-class _ViewPhotoState extends State<ViewPhoto> {
+class ViewPhotoState extends State<ViewPhoto> {
   List<List> photos = [];
   List? photo;
   @override
@@ -53,14 +52,7 @@ class _ViewPhotoState extends State<ViewPhoto> {
         title: Text(widget.text),
       ),
       body: photo?.first != null
-          ? /*GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-    itemCount: photo.length,
-    padding: EdgeInsets.all(10.0),
-    itemBuilder: (context,int index)=>Card(child: Image.network(photo[index])),
-    
-  )*/
-          Center(
+          ? Center(
               child: Image.network(
                 photo?.first,
                 fit: BoxFit.fill,

@@ -7,10 +7,10 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   static List<String> _abbreviationKeys = [];
   final _controller = TextEditingController();
   @override
@@ -72,12 +72,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                     title: Text(
                       _abbreviationKeys[i],
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 20.0),
                     ),
                     subtitle: Text(
                       abbreviations[_abbreviationKeys[i]] ?? '',
-                      style: TextStyle(fontSize: 16.0),
+                      style: const TextStyle(fontSize: 16.0),
                     ),
                     contentPadding: const EdgeInsets.all(5.0),
                     onTap: () => Navigator.of(context).push(

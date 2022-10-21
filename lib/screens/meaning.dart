@@ -20,7 +20,7 @@ MaterialPageRoute findMeaning(
                 children: <Widget>[
                   Text(
                     text,
-                    style: TextStyle(fontSize: 50.0),
+                    style: const TextStyle(fontSize: 50.0),
                   ),
                   const SizedBox(height: 10.0),
                   SizedBox(
@@ -33,7 +33,7 @@ MaterialPageRoute findMeaning(
                             child: map[text].split(" ")[i] != "or"
                                 ? Text(
                                     map[text].split(" ")[i],
-                                    style: TextStyle(fontSize: 30.0),
+                                    style: const TextStyle(fontSize: 30.0),
                                   )
                                 : Column(
                                     children: const <Widget>[
