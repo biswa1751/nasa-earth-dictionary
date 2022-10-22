@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa/data/data.dart';
-import 'package:nasa/screens/helpers/drawer.dart';
-import 'package:nasa/screens/meaning.dart';
+import 'package:nasa/screens/Home_page/widgets/drawer.dart';
+import 'package:nasa/screens/meaning/meaning.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,7 +25,9 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("NASA Abbreviations"),
         centerTitle: true,
+        scrolledUnderElevation: 0,
       ),
+      drawer: const AppDrawer(),
       body: Column(
         children: [
           Padding(
@@ -42,9 +44,11 @@ class HomePageState extends State<HomePage> {
                 border: const OutlineInputBorder(),
                 hintText: 'Type Something',
                 prefixIcon: const Icon(Icons.search),
+                isDense: true,
                 suffixIcon: IconButton(
                   onPressed: () {
                     _abbreviationKeys = abbreviations.keys.toList();
+                    FocusScope.of(context).unfocus();
                     setState(() {});
                     _controller.clear();
                   },
@@ -67,6 +71,7 @@ class HomePageState extends State<HomePage> {
                     leading: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: CircleAvatar(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         child: Text(_abbreviationKeys[i][0]),
                       ),
                     ),
@@ -91,7 +96,6 @@ class HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      drawer: const AppDrawer(),
     );
   }
 }
