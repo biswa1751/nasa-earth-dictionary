@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nasa/constants/theme.dart';
-import 'package:nasa/screens/home_page.dart';
+import 'package:nasa/screens/Home_page/home_page.dart';
 
 void main() => runApp(const MyApp());
 
