@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nasa/constants/colors.dart';
 import 'package:nasa/constants/theme.dart';
 import 'package:nasa/screens/Home_page/home_page.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       home: const HomePage(),
+      color: AppColors.color,
     );
   }
 }

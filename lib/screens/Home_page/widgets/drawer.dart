@@ -48,7 +48,16 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
           ),
-          const Divider(height: 10.0)
+          const Divider(height: 10.0),
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: const Text("App Veriosn 1.0.0"),
+            onTap: () => showAboutDialog(
+              context: context,
+              applicationName: 'Nasa Abbreviations',
+              applicationVersion: '1.0.0',
+            ),
+          ),
         ],
       ),
     );
