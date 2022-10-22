@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nasa/model/image.dart';
+import 'package:nasa/screens/view_image/image.dart';
 
 MaterialPageRoute findMeaning(
     String text, List list, Map map, BuildContext context) {
