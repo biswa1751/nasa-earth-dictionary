@@ -48,6 +48,7 @@ class HomePageState extends State<HomePage> {
                 suffixIcon: IconButton(
                   onPressed: () {
                     _abbreviationKeys = abbreviations.keys.toList();
+                    FocusScope.of(context).unfocus();
                     setState(() {});
                     _controller.clear();
                   },
