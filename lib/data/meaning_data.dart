@@ -1,6 +1,6 @@
-Map<String, String> abbreviations = <String, String>{
-  "A/B Test": "Testmethode, um die Reaktionen von Testpersonen auf zwei oder mehrere unterschiedliche Varianten (z. B. eines Produkts, einer Webseite, eines E-Mailings oder auch einer Grafik) zu ermitteln",
-  "Absprungrate": "Prozentsatz von Besuchern einer Website, die den nächsten logischen  Schritt  im  Verkaufsprozess  nicht  gehen  und  den  Online-Vertriebskanal verlassen",
+Map<String, String> meaning = <String, String>{
+  "A/B Test": "test,  the test data is coming from meaning which is new data file",
+  "Absprungrate": "1Prozentsatz von Besuchern einer Website, die den nächsten logischen  Schritt  im  Verkaufsprozess  nicht  gehen  und  den  Online-Vertriebskanal verlassen",
   "Advertorial": "Werbeanzeige in redaktioneller Aufmachung",
   "Affiliate-Marketing": "Ein Bereich des Online-Marketings, bei dem Webseitenbetrei-ber Werbelinks von Dritten auf ihrer Plattform platzieren",
   "ASP": "sieheAverage Selling Price",

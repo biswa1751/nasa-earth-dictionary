@@ -3,6 +3,8 @@ import 'package:nasa/data/data.dart';
 import 'package:nasa/screens/Home_page/widgets/drawer.dart';
 import 'package:nasa/screens/meaning/meaning.dart';
 
+import '../../data/meaning_data.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -12,11 +14,13 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   static List<String> _abbreviationKeys = [];
+ static List<String> _meaningKeys = [];
   final _controller = TextEditingController();
   @override
   void initState() {
     super.initState();
     _abbreviationKeys = abbreviations.keys.toList();
+    _meaningKeys = meaning.keys.toList();
   }
 
   @override
@@ -86,8 +90,8 @@ class HomePageState extends State<HomePage> {
                     ),
                     contentPadding: const EdgeInsets.all(5.0),
                     onTap: () => Navigator.of(context).push(
-                      findMeaning(_abbreviationKeys[i], _abbreviationKeys,
-                          abbreviations, context),
+                      findMeaning(_meaningKeys[i], _meaningKeys,
+                          meaning, context),
                     ),
                   ),
                 );
