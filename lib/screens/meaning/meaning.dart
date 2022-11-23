@@ -22,7 +22,6 @@ MaterialPageRoute findMeaning(
                 elevation: 10,
                 shadowColor: Colors.black.withOpacity(0.2),
                 child: Column(
-
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
@@ -33,39 +32,16 @@ MaterialPageRoute findMeaning(
                     SizedBox(
                       height: 500.0,
                       width: 500.0,
-                      child: ListView.builder(
-                        itemCount: map[text].split(" ").length,
-                        itemBuilder: (context, int i) =>
-                           Padding(
-                             padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                             child: InkWell(
-                                child: map[text].split(" ")[i] != "or"
-                                    ? Text(
-                                        map[text].split(" ")[i],
-                                        style: const TextStyle(),
-                                      )
-                                    : Column(
-                                        children: const <Widget>[
-                                          SizedBox(
-                                            height: 15.0,
-                                          ),
-                                          Text(
-                                            "OR",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0),
-                                          ),
-                                          SizedBox(
-                                            height: 15.0,
-                                          ),
-                                        ],
-                                      ),
-                                onTap: () => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) => ViewPhoto(
-                                            text: map[text].split(" ")[i])))),
-                           ),
+                      child:Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: InkWell(
+                            child: Text(map[text],style: const TextStyle(fontSize: 20),),
+                            onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ViewPhoto(
+                                  text: text)))
                         ),
+                      )
                       ),
 
 
