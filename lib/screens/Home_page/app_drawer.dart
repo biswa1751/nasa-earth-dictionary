@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nasa/gen/assets.gen.dart';
 import 'package:nasa/screens/about_page/about_screen.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -9,7 +10,7 @@ class AppDrawer extends StatelessWidget {
     return Drawer(
       child: Column(
         children: <Widget>[
-          Image.asset("assets/happy.gif"),
+          Assets.happy.image(),
           ListTile(
             leading: const Icon(Icons.info),
             title: const Text("About Us"),

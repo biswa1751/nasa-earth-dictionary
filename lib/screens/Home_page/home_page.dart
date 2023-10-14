@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa/data/data.dart';
 import 'package:nasa/helpers/extensions.dart';
-import 'package:nasa/screens/Home_page/drawer.dart';
+import 'package:nasa/screens/Home_page/app_drawer.dart';
 import 'package:nasa/screens/meaning/meaning.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,7 +42,8 @@ class HomePageState extends State<HomePage> {
                 setState(() {});
               },
               decoration: InputDecoration(
-                border: const OutlineInputBorder(),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                 hintText: 'Type Something',
                 prefixIcon: const Icon(Icons.search),
                 isDense: true,
@@ -59,44 +60,54 @@ class HomePageState extends State<HomePage> {
             ),
           ),
           Flexible(
-            child: ListView.builder(
-              itemCount: _abbreviationKeys.length,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, i) {
-                return Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 20)
-                      .copyWith(top: 10),
-                  elevation: 10,
-                  shadowColor: Colors.black.withOpacity(0.2),
-                  child: ListTile(
-                    leading: Padding(
-                      padding: const EdgeInsets.only(left: 18.0),
-                      child: CircleAvatar(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        child: Text(
-                          _abbreviationKeys[i][0],
-                          style: context.textTheme.bodyMedium
-                              ?.copyWith(color: context.colorScheme.onPrimary),
+            child: Scrollbar(
+              child: ListView.builder(
+                itemCount: _abbreviationKeys.length,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, i) {
+                  return Card(
+                    margin: const EdgeInsets.symmetric(horizontal: 20)
+                        .copyWith(top: 10),
+                    color: context.colorScheme.secondaryContainer,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      leading: Padding(
+                        padding: const EdgeInsets.only(left: 18.0),
+                        child: CircleAvatar(
+                          backgroundColor: context.colorScheme.primary,
+                          child: Text(
+                            _abbreviationKeys[i][0],
+                            style: context.textTheme.bodyMedium?.copyWith(
+                                color: context.colorScheme.onPrimary),
+                          ),
+                        ),
+                      ),
+                      title: Text(
+                        _abbreviationKeys[i],
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20.0),
+                      ),
+                      subtitle: Text(
+                        abbreviations[_abbreviationKeys[i]] ?? '',
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+                      contentPadding: const EdgeInsets.all(5.0),
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => MeaningPage(
+                            text: _abbreviationKeys[i],
+                            list: _abbreviationKeys,
+                            map: abbreviations,
+                          ),
                         ),
                       ),
                     ),
-                    title: Text(
-                      _abbreviationKeys[i],
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20.0),
-                    ),
-                    subtitle: Text(
-                      abbreviations[_abbreviationKeys[i]] ?? '',
-                      style: const TextStyle(fontSize: 16.0),
-                    ),
-                    contentPadding: const EdgeInsets.all(5.0),
-                    onTap: () => Navigator.of(context).push(
-                      findMeaning(_abbreviationKeys[i], _abbreviationKeys,
-                          abbreviations, context),
-                    ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],
