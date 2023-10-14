@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa/data/data.dart';
-import 'package:nasa/screens/Home_page/widgets/drawer.dart';
+import 'package:nasa/helpers/extensions.dart';
+import 'package:nasa/screens/Home_page/drawer.dart';
 import 'package:nasa/screens/meaning/meaning.dart';
 
 class HomePage extends StatefulWidget {
@@ -72,7 +73,11 @@ class HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.only(left: 18.0),
                       child: CircleAvatar(
                         backgroundColor: Theme.of(context).colorScheme.primary,
-                        child: Text(_abbreviationKeys[i][0]),
+                        child: Text(
+                          _abbreviationKeys[i][0],
+                          style: context.textTheme.bodyMedium
+                              ?.copyWith(color: context.colorScheme.onPrimary),
+                        ),
                       ),
                     ),
                     title: Text(
