@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const color = Colors.deepPurple;
+  static const color = Colors.green;
 }

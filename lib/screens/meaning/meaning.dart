@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:nasa/screens/view_image/image.dart';
 
-MaterialPageRoute findMeaning(
-    String text, List list, Map map, BuildContext context) {
+class MeaningPage extends StatelessWidget {
+  final String text;
+  final List list;
+  final Map map;
+
+  const MeaningPage({
+    Key? key,
+    required this.text,
+    required this.list,
+    required this.map,
+  }) : super(key: key);
   bool check(String text) {
     for (int i = 0; i < list.length; i++) {
       if (list[i] == text) return true;
@@ -10,8 +19,9 @@ MaterialPageRoute findMeaning(
     return false;
   }
 
-  return MaterialPageRoute(
-    builder: (context) => Scaffold(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(title: const Text("Meaning")),
       body: check(text)
           ? Center(
@@ -74,6 +84,6 @@ MaterialPageRoute findMeaning(
                 style: TextStyle(fontSize: 20.0),
               ),
             ),
-    ),
-  );
+    );
+  }
 }
