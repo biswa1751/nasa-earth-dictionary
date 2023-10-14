@@ -31,9 +31,9 @@ class AppDrawer extends StatelessWidget {
                   body: Center(
                     child: Container(
                       padding: const EdgeInsets.all(20.0),
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const <Widget>[
+                        children: <Widget>[
                           Center(
                             child: Text(
                               "1.https://www.nasa.gov/directorates/heo/scan/definitions/acronyms/index.html\n2.https://images-api.nasa.gov",

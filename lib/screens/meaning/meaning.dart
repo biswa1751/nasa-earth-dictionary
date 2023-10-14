@@ -35,8 +35,8 @@ MaterialPageRoute findMeaning(
                                     map[text].split(" ")[i],
                                     style: const TextStyle(fontSize: 30.0),
                                   )
-                                : Column(
-                                    children: const <Widget>[
+                                : const Column(
+                                    children: <Widget>[
                                       SizedBox(
                                         height: 15.0,
                                       ),
@@ -62,7 +62,7 @@ MaterialPageRoute findMeaning(
                     padding: const EdgeInsets.only(bottom: 18.0),
                     child: Text(
                       "Click on  text to get Image",
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   )
                 ],

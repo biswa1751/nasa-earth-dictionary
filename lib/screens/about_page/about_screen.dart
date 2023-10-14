@@ -9,10 +9,10 @@ class AboutScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("About Us"),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             Text(
               "Made By",
               style: TextStyle(fontSize: 60.0, fontWeight: FontWeight.bold),
