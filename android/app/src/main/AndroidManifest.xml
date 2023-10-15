@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nasa">
    <application
-        android:label="nasa"
+        android:label="Nasa Dictionary"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
