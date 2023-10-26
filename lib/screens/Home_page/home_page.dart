@@ -66,6 +66,7 @@ class HomePageState extends State<HomePage> {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, i) {
                   return Card(
+                    elevation: 10,
                     margin: const EdgeInsets.symmetric(horizontal: 20)
                         .copyWith(top: 10),
                     color: context.colorScheme.secondaryContainer,
