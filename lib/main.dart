@@ -5,8 +5,23 @@ import 'package:nasa/screens/Home_page/home_page.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode themeMode = ThemeMode.dark;
+  themechange() {
+    if (themeMode == ThemeMode.dark) {
+      themeMode = ThemeMode.light;
+    } else {
+      themeMode = ThemeMode.dark;
+    }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +29,11 @@ class MyApp extends StatelessWidget {
       title: 'NASA Abbreviation',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: const HomePage(),
+      themeMode: themeMode,
+      home: HomePage(
+        key: ValueKey(themeMode.toString()),
+        themechange: themechange,
+      ),
       color: AppColors.color,
     );
   }

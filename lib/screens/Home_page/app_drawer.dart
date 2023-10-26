@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:nasa/gen/assets.gen.dart';
 import 'package:nasa/screens/about_page/about_screen.dart';
 
-class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key? key}) : super(key: key);
+class AppDrawer extends StatefulWidget {
+  const AppDrawer({Key? key, required this.themechanged}) : super(key: key);
+
+  final Function themechanged;
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  bool? checked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +27,18 @@ class AppDrawer extends StatelessWidget {
                 builder: (context) => const AboutScreen(),
               ),
             ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.radio_button_checked_outlined),
+            title: const Text("Theme"),
+            trailing: Checkbox(
+                value: checked,
+                onChanged: (value) {
+                  widget.themechanged();
+                  setState(() {
+                    checked = value;
+                  });
+                }),
           ),
           ListTile(
             leading: const Icon(Icons.language),
