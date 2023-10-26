@@ -31,7 +31,6 @@ class _MyAppState extends State<MyApp> {
       darkTheme: AppTheme.darkTheme,
       themeMode: themeMode,
       home: HomePage(
-        key: ValueKey(themeMode.toString()),
         themechange: themechange,
       ),
       color: AppColors.color,

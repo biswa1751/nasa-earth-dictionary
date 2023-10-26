@@ -11,7 +11,6 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  bool? checked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +29,11 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             leading: const Icon(Icons.radio_button_checked_outlined),
-            title: const Text("Theme"),
+            title: const Text("Dark Theme"),
             trailing: Checkbox(
-                value: checked,
+                value: Theme.of(context).brightness==Brightness.dark,
                 onChanged: (value) {
                   widget.themechanged();
-                  setState(() {
-                    checked = value;
-                  });
                 }),
           ),
           ListTile(

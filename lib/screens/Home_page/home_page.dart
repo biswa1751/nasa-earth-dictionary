@@ -31,8 +31,6 @@ class HomePageState extends State<HomePage> {
       drawer: AppDrawer(
         themechanged: () {
           widget.themechange();
-          //    _abbreviationKeys = abbreviations.keys.toList();
-          // setState(() {});
         },
       ),
       body: Column(
