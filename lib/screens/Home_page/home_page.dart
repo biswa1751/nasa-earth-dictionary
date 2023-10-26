@@ -44,7 +44,7 @@ class HomePageState extends State<HomePage> {
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                hintText: 'Type Something',
+                hintText: 'Type Something Here',
                 prefixIcon: const Icon(Icons.search),
                 isDense: true,
                 suffixIcon: IconButton(
