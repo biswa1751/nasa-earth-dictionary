@@ -70,10 +70,10 @@ class HomePageState extends State<HomePage> {
                         .copyWith(top: 10),
                     color: context.colorScheme.secondaryContainer,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(20)),
                     child: ListTile(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                          borderRadius: BorderRadius.circular(20)),
                       leading: Padding(
                         padding: const EdgeInsets.only(left: 18.0),
                         child: CircleAvatar(
