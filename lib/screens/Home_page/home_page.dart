@@ -5,8 +5,8 @@ import 'package:nasa/screens/Home_page/app_drawer.dart';
 import 'package:nasa/screens/meaning/meaning.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  const HomePage({Key? key, required this.themechange}) : super(key: key);
+  final Function themechange;
   @override
   HomePageState createState() => HomePageState();
 }
@@ -28,7 +28,11 @@ class HomePageState extends State<HomePage> {
         centerTitle: true,
         scrolledUnderElevation: 0,
       ),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(
+        themechanged: () {
+          widget.themechange();
+        },
+      ),
       body: Column(
         children: [
           Padding(
@@ -66,9 +70,9 @@ class HomePageState extends State<HomePage> {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, i) {
                   return Card(
+                    key: ValueKey(i.toString()),
                     margin: const EdgeInsets.symmetric(horizontal: 20)
                         .copyWith(top: 10),
-                    color: context.colorScheme.secondaryContainer,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
                     child: ListTile(
@@ -77,7 +81,7 @@ class HomePageState extends State<HomePage> {
                       leading: Padding(
                         padding: const EdgeInsets.only(left: 18.0),
                         child: CircleAvatar(
-                          backgroundColor: context.colorScheme.primary,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
                           child: Text(
                             _abbreviationKeys[i][0],
                             style: context.textTheme.bodyMedium?.copyWith(
