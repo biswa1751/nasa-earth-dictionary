@@ -25,6 +25,15 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("NASA Abbreviations"),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.circle_notifications,
+              size: 40,
+            ),
+          )
+        ],
         centerTitle: true,
         scrolledUnderElevation: 0,
       ),
