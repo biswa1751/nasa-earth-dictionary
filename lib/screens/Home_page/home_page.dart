@@ -47,7 +47,7 @@ class HomePageState extends State<HomePage> {
               },
               decoration: InputDecoration(
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                 hintText: 'Type Something',
                 prefixIcon: const Icon(Icons.search),
                 isDense: true,
@@ -81,7 +81,8 @@ class HomePageState extends State<HomePage> {
                       leading: Padding(
                         padding: const EdgeInsets.only(left: 18.0),
                         child: CircleAvatar(
-                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           child: Text(
                             _abbreviationKeys[i][0],
                             style: context.textTheme.bodyMedium?.copyWith(
