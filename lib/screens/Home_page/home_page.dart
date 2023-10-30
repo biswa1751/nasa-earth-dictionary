@@ -56,8 +56,8 @@ class HomePageState extends State<HomePage> {
               },
               decoration: InputDecoration(
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                hintText: 'Type Something',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                hintText: 'Type Something Here',
                 prefixIcon: const Icon(Icons.search),
                 isDense: true,
                 suffixIcon: IconButton(
@@ -79,14 +79,14 @@ class HomePageState extends State<HomePage> {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, i) {
                   return Card(
-                    key: ValueKey(i.toString()),
+                    elevation: 10,
                     margin: const EdgeInsets.symmetric(horizontal: 20)
                         .copyWith(top: 10),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(20)),
                     child: ListTile(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                          borderRadius: BorderRadius.circular(20)),
                       leading: Padding(
                         padding: const EdgeInsets.only(left: 18.0),
                         child: CircleAvatar(
