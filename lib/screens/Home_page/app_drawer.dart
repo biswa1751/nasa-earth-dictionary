@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nasa/gen/assets.gen.dart';
 import 'package:nasa/screens/about_page/about_screen.dart';
+import 'package:nasa/screens/help_screen.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key, required this.themechanged}) : super(key: key);
@@ -11,7 +12,6 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,7 +31,7 @@ class _AppDrawerState extends State<AppDrawer> {
             leading: const Icon(Icons.radio_button_checked_outlined),
             title: const Text("Dark Theme"),
             trailing: Checkbox(
-                value: Theme.of(context).brightness==Brightness.dark,
+                value: Theme.of(context).brightness == Brightness.dark,
                 onChanged: (value) {
                   widget.themechanged();
                 }),
@@ -63,6 +63,13 @@ class _AppDrawerState extends State<AppDrawer> {
                   ),
                 ),
               ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.help_outline),
+            title: const Text("Help"),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const HelpScreen()),
             ),
           ),
           const Divider(height: 10.0),
