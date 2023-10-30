@@ -25,6 +25,15 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("NASA Abbreviations"),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.circle_notifications,
+              size: 40,
+            ),
+          )
+        ],
         centerTitle: true,
         scrolledUnderElevation: 0,
       ),
@@ -81,7 +90,8 @@ class HomePageState extends State<HomePage> {
                       leading: Padding(
                         padding: const EdgeInsets.only(left: 18.0),
                         child: CircleAvatar(
-                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           child: Text(
                             _abbreviationKeys[i][0],
                             style: context.textTheme.bodyMedium?.copyWith(
