@@ -24,7 +24,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("NASA Abbreviations"),
+        title: const Text("NASA Dictionary"),
         actions: const [
           Padding(
             padding: EdgeInsets.all(8.0),
@@ -49,16 +49,38 @@ class HomePageState extends State<HomePage> {
             child: TextField(
               controller: _controller,
               onChanged: (t) {
-                _abbreviationKeys = abbreviations.keys
-                    .where((element) => element.startsWith(t))
-                    .toList();
+                if (t.isEmpty) {
+                  _abbreviationKeys = abbreviations.keys.toList();
+                } else {
+                  _abbreviationKeys = abbreviations.keys
+                      .where((element) =>
+                          element.toLowerCase().contains(t.toLowerCase()) ||
+                          (abbreviations[element]
+                                  ?.toLowerCase()
+                                  .contains(t.toLowerCase()) ??
+                              false))
+                      .toList();
+                }
                 setState(() {});
               },
               decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                hintText: 'Type Something Here',
-                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Theme.of(context)
+                    .colorScheme
+                    .surfaceVariant
+                    .withOpacity(0.3),
+                hintText: 'Search abbreviations or definitions...',
+                hintStyle: TextStyle(
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurfaceVariant
+                      .withOpacity(0.6),
+                ),
+                prefixIcon: const Icon(Icons.search_rounded),
                 isDense: true,
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -67,7 +89,7 @@ class HomePageState extends State<HomePage> {
                     setState(() {});
                     _controller.clear();
                   },
-                  icon: const Icon(Icons.close),
+                  icon: const Icon(Icons.clear_rounded),
                 ),
               ),
             ),
@@ -78,43 +100,59 @@ class HomePageState extends State<HomePage> {
                 itemCount: _abbreviationKeys.length,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, i) {
-                  return Card(
-                    elevation: 10,
-                    margin: const EdgeInsets.symmetric(horizontal: 20)
-                        .copyWith(top: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: ListTile(
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                    child: Card(
+                      elevation: 4,
+                      shadowColor: Theme.of(context).colorScheme.shadow.withOpacity(0.1),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      leading: Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: CircleAvatar(
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        leading: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primaryContainer,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                           child: Text(
                             _abbreviationKeys[i][0],
-                            style: context.textTheme.bodyMedium?.copyWith(
-                                color: context.colorScheme.onPrimary),
+                            style: context.textTheme.titleLarge?.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimaryContainer,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
-                      title: Text(
-                        _abbreviationKeys[i],
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20.0),
-                      ),
-                      subtitle: Text(
-                        abbreviations[_abbreviationKeys[i]] ?? '',
-                        style: const TextStyle(fontSize: 16.0),
-                      ),
-                      contentPadding: const EdgeInsets.all(5.0),
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => MeaningPage(
-                            text: _abbreviationKeys[i],
-                            list: _abbreviationKeys,
-                            map: abbreviations,
+                        title: Text(
+                          _abbreviationKeys[i],
+                          style: context.textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 4.0),
+                          child: Text(
+                            abbreviations[_abbreviationKeys[i]] ?? '',
+                            style: context.textTheme.bodyMedium?.copyWith(
+                              color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              height: 1.3,
+                            ),
+                          ),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => MeaningPage(
+                              text: _abbreviationKeys[i],
+                              list: _abbreviationKeys,
+                              map: abbreviations,
+                            ),
                           ),
                         ),
                       ),

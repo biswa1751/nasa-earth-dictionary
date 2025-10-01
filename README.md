@@ -1,5 +1,6 @@
-# nasa
-A nasa earth dictonary. abbriviations used in NASA and its details.
+# NASA Earth Dictionary
+
+A comprehensive NASA abbreviations dictionary. Definitions and details of abbreviations used in NASA and space exploration.
 
 ## Getting Started
 
