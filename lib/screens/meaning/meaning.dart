@@ -22,15 +22,28 @@ class MeaningPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Meaning")),
+      appBar: AppBar(
+        title: const Text("Definition"),
+        centerTitle: true,
+      ),
       body: check(text)
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    text,
-                    style: const TextStyle(fontSize: 50.0),
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Text(
+                      text,
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10.0),
                   SizedBox(
@@ -51,7 +64,7 @@ class MeaningPage extends StatelessWidget {
                                         height: 15.0,
                                       ),
                                       Text(
-                                        "OR",
+                                        " OR ",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20.0),
@@ -70,9 +83,18 @@ class MeaningPage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 18.0),
-                    child: Text(
-                      "Click on  text to get Image",
-                      style: Theme.of(context).textTheme.bodyMedium,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        "Click on text to get Image",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
+                      ),
                     ),
                   )
                 ],
