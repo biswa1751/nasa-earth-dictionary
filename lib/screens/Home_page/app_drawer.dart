@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nasa/gen/assets.gen.dart';
 import 'package:nasa/screens/about_page/about_screen.dart';
 import 'package:nasa/screens/help_screen.dart';
+import 'package:nasa/screens/sources/sources_screen.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key, required this.themechanged});
@@ -41,27 +42,7 @@ class _AppDrawerState extends State<AppDrawer> {
             title: const Text("Sources"),
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Scaffold(
-                  appBar: AppBar(
-                    title: const Text("Sources"),
-                  ),
-                  body: Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(20.0),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Center(
-                            child: Text(
-                              "1.https://www.nasa.gov/directorates/heo/scan/definitions/acronyms/index.html\n2.https://images-api.nasa.gov",
-                              style: TextStyle(fontSize: 20.0),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                builder: (context) => const SourcesScreen(),
               ),
             ),
           ),
