@@ -39,10 +39,13 @@ class MeaningPage extends StatelessWidget {
                     ),
                     child: Text(
                       text,
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onPrimaryContainer,
-                      ),
+                      style:
+                          Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryContainer,
+                              ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
@@ -64,7 +67,7 @@ class MeaningPage extends StatelessWidget {
                                         height: 15.0,
                                       ),
                                       Text(
-                                        " OR ",
+                                        "OR",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20.0),
@@ -84,7 +87,8 @@ class MeaningPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 18.0),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.surfaceVariant,
                         borderRadius: BorderRadius.circular(20),
@@ -92,8 +96,10 @@ class MeaningPage extends StatelessWidget {
                       child: Text(
                         "Click on text to get Image",
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
-                        ),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurfaceVariant,
+                            ),
                       ),
                     ),
                   )
