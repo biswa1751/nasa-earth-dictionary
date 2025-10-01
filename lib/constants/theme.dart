@@ -5,17 +5,76 @@ import 'package:flutter/material.dart';
 import 'package:nasa/constants/colors.dart';
 
 class AppTheme {
-  static const color = AppColors.color;
+  static const color = AppColors.primaryBlue;
+
   static final lightTheme = ThemeData.from(
-    colorScheme: ColorScheme.fromSeed(seedColor: color),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: color,
+      brightness: Brightness.light,
+    ),
     useMaterial3: true,
+  ).copyWith(
+    appBarTheme: const AppBarTheme(
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
+    ),
+    cardTheme: CardThemeData(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(width: 2),
+      ),
+    ),
   );
+
   static final darkTheme = ThemeData.from(
     colorScheme: ColorScheme.fromSeed(
       seedColor: color,
       brightness: Brightness.dark,
     ),
     useMaterial3: true,
+  ).copyWith(
+    appBarTheme: const AppBarTheme(
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
+    ),
+    cardTheme: CardThemeData(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(width: 2),
+      ),
+    ),
   );
   AppTheme._();
 
