@@ -50,12 +50,15 @@ class _HelpScreenState extends State<HelpScreen> {
 
   String _getAIResponse(String userMessage) {
     final message = userMessage.toLowerCase();
-    
+
     if (message.contains('search') || message.contains('find')) {
       return "You can search for NASA abbreviations by typing in the search bar on the home screen. The search works with both abbreviations and their full definitions!";
-    } else if (message.contains('theme') || message.contains('dark') || message.contains('light')) {
+    } else if (message.contains('theme') ||
+        message.contains('dark') ||
+        message.contains('light')) {
       return "You can switch between dark and light themes using the theme toggle in the app drawer. Just tap the menu icon and toggle the theme switch!";
-    } else if (message.contains('abbreviation') || message.contains('meaning')) {
+    } else if (message.contains('abbreviation') ||
+        message.contains('meaning')) {
       return "NASA abbreviations are shortened forms of technical terms used in space exploration. Tap on any abbreviation to see its detailed definition and related terms.";
     } else if (message.contains('help') || message.contains('support')) {
       return "I'm here to help! You can ask me about search functionality, themes, abbreviations, or any other features of the NASA Dictionary app.";
@@ -99,7 +102,10 @@ class _HelpScreenState extends State<HelpScreen> {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.2),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onPrimary
+                        .withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Icon(
@@ -112,17 +118,20 @@ class _HelpScreenState extends State<HelpScreen> {
                 Text(
                   "How can we help you?",
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontWeight: FontWeight.bold,
-                  ),
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   "Get instant help with our AI assistant or contact our support team",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
-                  ),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onPrimary
+                            .withValues(alpha: 0.8),
+                      ),
                 ),
               ],
             ),
@@ -159,7 +168,10 @@ class _HelpScreenState extends State<HelpScreen> {
                       color: Theme.of(context).colorScheme.surface,
                       border: Border(
                         top: BorderSide(
-                          color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .outline
+                              .withValues(alpha: 0.2),
                         ),
                       ),
                     ),
@@ -175,7 +187,10 @@ class _HelpScreenState extends State<HelpScreen> {
                                 borderSide: BorderSide.none,
                               ),
                               filled: true,
-                              fillColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+                              fillColor: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerHighest
+                                  .withValues(alpha: 0.5),
                               contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 20,
                                 vertical: 12,
@@ -195,7 +210,8 @@ class _HelpScreenState extends State<HelpScreen> {
                               Icons.send,
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
-                            onPressed: () => _sendMessage(_messageController.text),
+                            onPressed: () =>
+                                _sendMessage(_messageController.text),
                           ),
                         ),
                       ],
@@ -214,7 +230,8 @@ class _HelpScreenState extends State<HelpScreen> {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       child: Row(
-        mainAxisAlignment: message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment:
+            message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (!message.isUser) ...[
@@ -239,10 +256,14 @@ class _HelpScreenState extends State<HelpScreen> {
               decoration: BoxDecoration(
                 color: message.isUser
                     ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.surfaceVariant,
+                    : Theme.of(context).colorScheme.surfaceContainerHighest,
                 borderRadius: BorderRadius.circular(18).copyWith(
-                  bottomLeft: message.isUser ? const Radius.circular(18) : const Radius.circular(4),
-                  bottomRight: message.isUser ? const Radius.circular(4) : const Radius.circular(18),
+                  bottomLeft: message.isUser
+                      ? const Radius.circular(18)
+                      : const Radius.circular(4),
+                  bottomRight: message.isUser
+                      ? const Radius.circular(4)
+                      : const Radius.circular(18),
                 ),
               ),
               child: Column(
@@ -251,21 +272,23 @@ class _HelpScreenState extends State<HelpScreen> {
                   Text(
                     message.text,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: message.isUser
-                          ? Theme.of(context).colorScheme.onPrimary
-                          : Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
+                          color: message.isUser
+                              ? Theme.of(context).colorScheme.onPrimary
+                              : Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     _formatTime(message.timestamp),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: (message.isUser
-                              ? Theme.of(context).colorScheme.onPrimary
-                              : Theme.of(context).colorScheme.onSurfaceVariant)
-                          .withOpacity(0.6),
-                      fontSize: 10,
-                    ),
+                          color: (message.isUser
+                                  ? Theme.of(context).colorScheme.onPrimary
+                                  : Theme.of(context)
+                                      .colorScheme
+                                      .onSurfaceVariant)
+                              .withValues(alpha: 0.6),
+                          fontSize: 10,
+                        ),
                   ),
                 ],
               ),
@@ -295,7 +318,7 @@ class _HelpScreenState extends State<HelpScreen> {
   String _formatTime(DateTime timestamp) {
     final now = DateTime.now();
     final difference = now.difference(timestamp);
-    
+
     if (difference.inMinutes < 1) {
       return "Just now";
     } else if (difference.inMinutes < 60) {

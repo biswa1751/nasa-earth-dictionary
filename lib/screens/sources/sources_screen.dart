@@ -18,7 +18,10 @@ class SourcesScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Theme.of(context).colorScheme.inversePrimary.withOpacity(0.1),
+              Theme.of(context)
+                  .colorScheme
+                  .inversePrimary
+                  .withValues(alpha: 0.1),
               Theme.of(context).scaffoldBackgroundColor,
             ],
           ),
@@ -37,7 +40,8 @@ class SourcesScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).shadowColor.withOpacity(0.1),
+                      color:
+                          Theme.of(context).shadowColor.withValues(alpha: 0.1),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -69,7 +73,7 @@ class SourcesScreen extends StatelessWidget {
                             color: Theme.of(context)
                                 .colorScheme
                                 .onPrimaryContainer
-                                .withOpacity(0.8),
+                                .withValues(alpha: 0.8),
                           ),
                     ),
                   ],
@@ -122,8 +126,10 @@ class SourcesScreen extends StatelessWidget {
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(12.0),
                   border: Border.all(
-                    color:
-                        Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .outline
+                        .withValues(alpha: 0.2),
                   ),
                 ),
                 child: Column(
@@ -168,10 +174,13 @@ class SourcesScreen extends StatelessWidget {
                   color: Theme.of(context)
                       .colorScheme
                       .errorContainer
-                      .withOpacity(0.1),
+                      .withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(
-                    color: Theme.of(context).colorScheme.error.withOpacity(0.3),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .error
+                        .withValues(alpha: 0.3),
                     width: 1,
                   ),
                 ),

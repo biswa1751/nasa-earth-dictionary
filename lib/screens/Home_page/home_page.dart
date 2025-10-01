@@ -81,14 +81,14 @@ class HomePageState extends State<HomePage> {
                 filled: true,
                 fillColor: Theme.of(context)
                     .colorScheme
-                    .surfaceVariant
-                    .withOpacity(0.3),
+                    .surfaceContainerHighest
+                    .withValues(alpha: 0.3),
                 hintText: 'Search abbreviations or definitions...',
                 hintStyle: TextStyle(
                   color: Theme.of(context)
                       .colorScheme
                       .onSurfaceVariant
-                      .withOpacity(0.6),
+                      .withValues(alpha: 0.6),
                 ),
                 prefixIcon: const Icon(Icons.search_rounded),
                 isDense: true,
@@ -117,8 +117,10 @@ class HomePageState extends State<HomePage> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                     child: Card(
                       elevation: 4,
-                      shadowColor:
-                          Theme.of(context).colorScheme.shadow.withOpacity(0.1),
+                      shadowColor: Theme.of(context)
+                          .colorScheme
+                          .shadow
+                          .withValues(alpha: 0.1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
