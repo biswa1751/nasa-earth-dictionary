@@ -39,7 +39,7 @@ class _HelpScreenState extends State<HelpScreen> {
               Container(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
-                  'How can we help you?',
+                  'How can we help you ?',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class _HelpScreenState extends State<HelpScreen> {
               Container(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  'It looks like you are experiencing problems\nwith our App. We are here to\nhelp so please get in touch with us',
+                  'It looks like you are experiencing problems\nwith our app. We are here to\nhelp so please get in touch with us on our Instagram handle',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 16,
