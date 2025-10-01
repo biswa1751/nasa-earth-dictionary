@@ -63,9 +63,12 @@ class HomePageState extends State<HomePage> {
                   _abbreviationKeys = abbreviations.keys.toList();
                 } else {
                   _abbreviationKeys = abbreviations.keys
-                      .where((element) => 
+                      .where((element) =>
                           element.toLowerCase().contains(t.toLowerCase()) ||
-                          (abbreviations[element]?.toLowerCase().contains(t.toLowerCase()) ?? false))
+                          (abbreviations[element]
+                                  ?.toLowerCase()
+                                  .contains(t.toLowerCase()) ??
+                              false))
                       .toList();
                 }
                 setState(() {});
@@ -76,10 +79,16 @@ class HomePageState extends State<HomePage> {
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+                fillColor: Theme.of(context)
+                    .colorScheme
+                    .surfaceVariant
+                    .withOpacity(0.3),
                 hintText: 'Search abbreviations or definitions...',
                 hintStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.6),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurfaceVariant
+                      .withOpacity(0.6),
                 ),
                 prefixIcon: const Icon(Icons.search_rounded),
                 isDense: true,
@@ -104,10 +113,12 @@ class HomePageState extends State<HomePage> {
                   return AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
-                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                     child: Card(
                       elevation: 4,
-                      shadowColor: Theme.of(context).colorScheme.shadow.withOpacity(0.1),
+                      shadowColor:
+                          Theme.of(context).colorScheme.shadow.withOpacity(0.1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -118,13 +129,16 @@ class HomePageState extends State<HomePage> {
                         leading: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primaryContainer,
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
                             _abbreviationKeys[i][0],
                             style: context.textTheme.titleLarge?.copyWith(
-                              color: Theme.of(context).colorScheme.onPrimaryContainer,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onPrimaryContainer,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -141,12 +155,15 @@ class HomePageState extends State<HomePage> {
                           child: Text(
                             abbreviations[_abbreviationKeys[i]] ?? '',
                             style: context.textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurfaceVariant,
                               height: 1.3,
                             ),
                           ),
                         ),
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (_) => MeaningPage(
