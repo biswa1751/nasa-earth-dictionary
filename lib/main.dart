@@ -6,7 +6,7 @@ import 'package:nasa/screens/Home_page/home_page.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ThemeMode themeMode = ThemeMode.dark;
-  themechange() {
+  void themechange() {
     if (themeMode == ThemeMode.dark) {
       themeMode = ThemeMode.light;
     } else {

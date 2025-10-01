@@ -7,11 +7,11 @@ class MeaningPage extends StatelessWidget {
   final Map map;
 
   const MeaningPage({
-    Key? key,
+    super.key,
     required this.text,
     required this.list,
     required this.map,
-  }) : super(key: key);
+  });
   bool check(String text) {
     for (int i = 0; i < list.length; i++) {
       if (list[i] == text) return true;
