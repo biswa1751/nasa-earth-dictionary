@@ -5,7 +5,7 @@ import 'package:nasa/screens/Home_page/app_drawer.dart';
 import 'package:nasa/screens/meaning/meaning.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.themechange}) : super(key: key);
+  const HomePage({super.key, required this.themechange});
   final Function themechange;
   @override
   HomePageState createState() => HomePageState();

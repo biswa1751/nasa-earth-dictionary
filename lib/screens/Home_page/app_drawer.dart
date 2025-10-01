@@ -4,7 +4,7 @@ import 'package:nasa/screens/about_page/about_screen.dart';
 import 'package:nasa/screens/help_screen.dart';
 
 class AppDrawer extends StatefulWidget {
-  const AppDrawer({Key? key, required this.themechanged}) : super(key: key);
+  const AppDrawer({super.key, required this.themechanged});
 
   final Function themechanged;
   @override

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ViewPhoto extends StatefulWidget {
   final String text;
 
-  const ViewPhoto({Key? key, required this.text}) : super(key: key);
+  const ViewPhoto({super.key, required this.text});
   @override
   ViewPhotoState createState() => ViewPhotoState();
 }
