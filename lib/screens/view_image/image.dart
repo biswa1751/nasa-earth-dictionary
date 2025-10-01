@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -53,8 +54,8 @@ class ViewPhotoState extends State<ViewPhoto> {
       ),
       body: photo?.first != null
           ? Center(
-              child: Image.network(
-                photo?.first,
+              child: CachedNetworkImage(
+                imageUrl: photo?.first ?? '',
                 fit: BoxFit.fill,
               ),
             )
