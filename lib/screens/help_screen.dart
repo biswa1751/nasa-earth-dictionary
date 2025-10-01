@@ -39,7 +39,7 @@ class _HelpScreenState extends State<HelpScreen> {
               Container(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
-                  'How can we help you?',
+                  'How can we help you ?',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
