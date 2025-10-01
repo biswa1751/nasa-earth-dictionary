@@ -2,6 +2,8 @@
 
 A comprehensive NASA abbreviations dictionary. Definitions and details of abbreviations used in NASA and space exploration.
 
+Search through thousands of NASA abbreviations and acronyms with an intuitive Flutter interface.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
