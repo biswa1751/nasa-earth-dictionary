@@ -11,7 +11,7 @@ class _HelpScreenState extends State<HelpScreen> {
   final TextEditingController _messageController = TextEditingController();
   final List<ChatMessage> _messages = [
     ChatMessage(
-      text: "Hello! I'm NASA Assistant. How can I help you today?",
+      text: "👋 Hello! I'm NASA Assistant. How can I help you today?",
       isUser: false,
       timestamp: DateTime.now(),
     ),
@@ -104,7 +104,7 @@ class _HelpScreenState extends State<HelpScreen> {
             ),
             const SizedBox(width: 12),
             const Text(
-              "Help & Support",
+              "🆘 Help & Support",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
