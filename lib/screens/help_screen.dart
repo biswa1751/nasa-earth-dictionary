@@ -73,11 +73,63 @@ class _HelpScreenState extends State<HelpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Help & Support"),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.primaryContainer,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Icon(
+                Icons.support_agent_rounded,
+                color: Theme.of(context).colorScheme.onPrimary,
+                size: 20,
+              ),
+            ),
+            const SizedBox(width: 12),
+            const Text(
+              "Help & Support",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
         centerTitle: true,
+        scrolledUnderElevation: 0,
         elevation: 0,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        surfaceTintColor: Colors.transparent,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(
+              Icons.arrow_back_rounded,
+              color: Theme.of(context).colorScheme.onSurface,
+              size: 20,
+            ),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
@@ -86,7 +138,7 @@ class _HelpScreenState extends State<HelpScreen> {
           // Header Section
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -94,43 +146,72 @@ class _HelpScreenState extends State<HelpScreen> {
                 colors: [
                   Theme.of(context).colorScheme.primary,
                   Theme.of(context).colorScheme.primaryContainer,
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.8),
                 ],
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                  blurRadius: 20,
+                  offset: const Offset(0, 8),
+                ),
+                BoxShadow(
+                  color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                  blurRadius: 40,
+                  offset: const Offset(0, 16),
+                ),
+              ],
             ),
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onPrimary
-                        .withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(50),
+                    gradient: LinearGradient(
+                      colors: [
+                        Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.3),
+                        Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.1),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(60),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.2),
+                        blurRadius: 16,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
                   ),
                   child: Icon(
-                    Icons.support_agent,
-                    size: 60,
+                    Icons.support_agent_rounded,
+                    size: 72,
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 24),
                 Text(
                   "How can we help you?",
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                        letterSpacing: 0.5,
                       ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 Text(
                   "Get instant help with our AI assistant or contact our support team",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: Theme.of(context)
                             .colorScheme
                             .onPrimary
-                            .withValues(alpha: 0.8),
+                            .withValues(alpha: 0.9),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        height: 1.5,
                       ),
                 ),
               ],
@@ -141,11 +222,25 @@ class _HelpScreenState extends State<HelpScreen> {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).colorScheme.surface,
+                    Theme.of(context).colorScheme.surface.withValues(alpha: 0.8),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                 ),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(28),
+                  topRight: Radius.circular(28),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).colorScheme.shadow.withValues(alpha: 0.1),
+                    blurRadius: 20,
+                    offset: const Offset(0, -8),
+                  ),
+                ],
               ),
               child: Column(
                 children: [
@@ -163,52 +258,112 @@ class _HelpScreenState extends State<HelpScreen> {
 
                   // Message Input
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
+                      gradient: LinearGradient(
+                        colors: [
+                          Theme.of(context).colorScheme.surface,
+                          Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
                       border: Border(
                         top: BorderSide(
                           color: Theme.of(context)
                               .colorScheme
                               .outline
-                              .withValues(alpha: 0.2),
+                              .withValues(alpha: 0.1),
+                          width: 1,
                         ),
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).colorScheme.shadow.withValues(alpha: 0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, -4),
+                        ),
+                      ],
                     ),
                     child: Row(
                       children: [
                         Expanded(
-                          child: TextField(
-                            controller: _messageController,
-                            decoration: InputDecoration(
-                              hintText: "Type your message...",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide.none,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Theme.of(context).colorScheme.surfaceContainerHighest,
+                                  Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.8),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
                               ),
-                              filled: true,
-                              fillColor: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainerHighest
-                                  .withValues(alpha: 0.5),
-                              contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 12,
-                              ),
+                              borderRadius: BorderRadius.circular(28),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Theme.of(context).colorScheme.shadow.withValues(alpha: 0.1),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
                             ),
-                            onSubmitted: _sendMessage,
+                            child: TextField(
+                              controller: _messageController,
+                              decoration: InputDecoration(
+                                hintText: "Type your message...",
+                                hintStyle: TextStyle(
+                                  color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(28),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: Colors.transparent,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 16,
+                                ),
+                                prefixIcon: Container(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Icon(
+                                    Icons.edit_rounded,
+                                    color: Theme.of(context).colorScheme.primary,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                              onSubmitted: _sendMessage,
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 16),
                         Container(
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
-                            borderRadius: BorderRadius.circular(25),
+                            gradient: LinearGradient(
+                              colors: [
+                                Theme.of(context).colorScheme.primary,
+                                Theme.of(context).colorScheme.primaryContainer,
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(28),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                                blurRadius: 12,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
                           ),
                           child: IconButton(
                             icon: Icon(
-                              Icons.send,
+                              Icons.send_rounded,
                               color: Theme.of(context).colorScheme.onPrimary,
+                              size: 24,
                             ),
                             onPressed: () =>
                                 _sendMessage(_messageController.text),
@@ -228,7 +383,7 @@ class _HelpScreenState extends State<HelpScreen> {
 
   Widget _buildMessageBubble(ChatMessage message) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 16),
       child: Row(
         mainAxisAlignment:
             message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
@@ -236,48 +391,88 @@ class _HelpScreenState extends State<HelpScreen> {
         children: [
           if (!message.isUser) ...[
             Container(
-              width: 32,
-              height: 32,
+              width: 40,
+              height: 40,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primaryContainer,
-                borderRadius: BorderRadius.circular(16),
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.primaryContainer,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
               ),
               child: Icon(
-                Icons.smart_toy,
-                size: 18,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                Icons.smart_toy_rounded,
+                size: 20,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 12),
           ],
           Flexible(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               decoration: BoxDecoration(
-                color: message.isUser
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(18).copyWith(
+                gradient: message.isUser
+                    ? LinearGradient(
+                        colors: [
+                          Theme.of(context).colorScheme.primary,
+                          Theme.of(context).colorScheme.primaryContainer,
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      )
+                    : LinearGradient(
+                        colors: [
+                          Theme.of(context).colorScheme.surfaceContainerHighest,
+                          Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.8),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                borderRadius: BorderRadius.circular(24).copyWith(
                   bottomLeft: message.isUser
-                      ? const Radius.circular(18)
-                      : const Radius.circular(4),
+                      ? const Radius.circular(24)
+                      : const Radius.circular(6),
                   bottomRight: message.isUser
-                      ? const Radius.circular(4)
-                      : const Radius.circular(18),
+                      ? const Radius.circular(6)
+                      : const Radius.circular(24),
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: message.isUser
+                        ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.2)
+                        : Theme.of(context).colorScheme.shadow.withValues(alpha: 0.1),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     message.text,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           color: message.isUser
                               ? Theme.of(context).colorScheme.onPrimary
-                              : Theme.of(context).colorScheme.onSurfaceVariant,
+                              : Theme.of(context).colorScheme.onSurface,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          height: 1.4,
                         ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
                   Text(
                     _formatTime(message.timestamp),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -286,8 +481,9 @@ class _HelpScreenState extends State<HelpScreen> {
                                   : Theme.of(context)
                                       .colorScheme
                                       .onSurfaceVariant)
-                              .withValues(alpha: 0.6),
-                          fontSize: 10,
+                              .withValues(alpha: 0.7),
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
                         ),
                   ),
                 ],
@@ -295,17 +491,31 @@ class _HelpScreenState extends State<HelpScreen> {
             ),
           ),
           if (message.isUser) ...[
-            const SizedBox(width: 8),
+            const SizedBox(width: 12),
             Container(
-              width: 32,
-              height: 32,
+              width: 40,
+              height: 40,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(16),
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.primaryContainer,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
               ),
               child: Icon(
-                Icons.person,
-                size: 18,
+                Icons.person_rounded,
+                size: 20,
                 color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
@@ -342,3 +552,4 @@ class ChatMessage {
     required this.timestamp,
   });
 }
+

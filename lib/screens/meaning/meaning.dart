@@ -12,6 +12,7 @@ class MeaningPage extends StatelessWidget {
     required this.list,
     required this.map,
   });
+
   bool check(String text) {
     for (int i = 0; i < list.length; i++) {
       if (list[i] == text) return true;
@@ -21,97 +22,138 @@ class MeaningPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textColor = theme.colorScheme.onPrimaryContainer;
+    final bgColor = theme.colorScheme.primaryContainer;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Definition"),
         centerTitle: true,
+        elevation: 2,
       ),
       body: check(text)
-          ? Center(
+          ? SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  // Word Container
                   Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      borderRadius: BorderRadius.circular(16),
+                      color: bgColor,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Text(
                       text,
-                      style:
-                          Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onPrimaryContainer,
-                              ),
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: textColor,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 10.0),
-                  SizedBox(
-                    height: 500.0,
-                    width: 500.0,
+                  const SizedBox(height: 24),
+
+                  // Meaning list
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.of(context).size.height * 0.55,
+                    ),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surfaceVariant.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                     child: ListView.builder(
+                      shrinkWrap: true,
                       itemCount: map[text].split(" ").length,
-                      itemBuilder: (context, int i) => Center(
-                        child: InkWell(
-                            child: map[text].split(" ")[i] != "or"
-                                ? Text(
-                                    map[text].split(" ")[i],
-                                    style: const TextStyle(fontSize: 30.0),
-                                  )
-                                : const Column(
-                                    children: <Widget>[
-                                      SizedBox(
-                                        height: 15.0,
-                                      ),
-                                      Text(
-                                        "OR",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0),
-                                      ),
-                                      SizedBox(
-                                        height: 15.0,
-                                      ),
-                                    ],
-                                  ),
-                            onTap: () => Navigator.of(context).push(
+                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                      itemBuilder: (context, i) {
+                        final word = map[text].split(" ")[i];
+                        if (word != "or") {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(8),
+                              onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (context) => ViewPhoto(
-                                        text: map[text].split(" ")[i])))),
+                                  builder: (context) => ViewPhoto(text: word),
+                                ),
+                              ),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                                decoration: BoxDecoration(
+                                  color: theme.colorScheme.primary.withOpacity(0.05),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  word,
+                                  style: const TextStyle(fontSize: 28),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          );
+                        } else {
+                          return Column(
+                            children: const [
+                              SizedBox(height: 12),
+                              Text(
+                                "OR",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                            ],
+                          );
+                        }
+                      },
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // Footer hint
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surfaceContainerHighest,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "Tap on a word to view its image",
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                        fontStyle: FontStyle.italic,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 18.0),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        "Click on text to get Image",
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurfaceVariant,
-                            ),
-                      ),
-                    ),
-                  )
                 ],
               ),
             )
-          : const Center(
+          : Center(
               child: Text(
-                "Not Found\nTry another Word",
-                style: TextStyle(fontSize: 20.0),
+                "Not Found\nTry another word",
+                style: theme.textTheme.titleLarge?.copyWith(color: Colors.redAccent),
+                textAlign: TextAlign.center,
               ),
             ),
     );
