@@ -41,7 +41,7 @@ class AboutScreen extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             const Text(
-              "About Us",
+              "ℹ️ About Us",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -241,6 +241,9 @@ class AboutScreen extends StatelessWidget {
                         ),
                         const SizedBox(width: 16),
                         Text(
+                          "📱 About This App",
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+
                           "About This App",
                           style: Theme.of(context)
                               .textTheme
